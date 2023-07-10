@@ -23,8 +23,8 @@ WHERE data_attivazione=2017 and in_produzione=true or in_commercio=true;
 
 ----------- Esercizio 5 ---------------
 
-SELECT data_fattura FROM fatture COUNT (d)
-WHERE iva=20 
+SELECT data_fattura, COUNT(*) FROM fatture
+WHERE iva >20
 GROUP BY (data_fattura);
 
 ----------- Esercizio 6 ---------------
