@@ -25,6 +25,7 @@ public class App {
 		}
 
 		insertStudente("luca", "puccino", "f", 7, 9, 6, "15/02/1996");
+		update("Giovanni", "lucertola", "f", 4, 5, 2, "15/02/1992");
 	}
 
 	public static void insertStudente(String name, String lastName, String gender, int avg, int minVote, int maxVote,
@@ -42,6 +43,25 @@ public class App {
 			s.execute();
 
 			System.out.println("Studente salvato!!!!");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void update(String name, String lastName, String gender, int avg, int minVote, int maxVote,
+			String brithDate) {
+		String sqlUpdate = "UPDATE school_students name=?, last_name=?, gender=?, avg=?, min_vote=?, max_vote=?, birthdate=? WHERE id=?";
+		try {
+			PreparedStatement s = conn.prepareStatement(sqlUpdate);
+			s.setString(1, name);
+			s.setString(1, lastName);
+			s.setString(1, gender);
+			s.setInt(1, avg);
+			s.setInt(1, minVote);
+			s.setInt(1, maxVote);
+			s.setString(1, brithDate);
+			s.execute();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
