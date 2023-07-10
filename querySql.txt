@@ -1,0 +1,60 @@
+----------- Esercizio 1 ---------------
+
+SELECT nome, cognome
+	FROM clienti 
+	WHERE clienti.data_nascita=1982;
+
+----------- Esercizio 2 ---------------
+
+SELECT count(*) 
+from fatture as numero_fatture
+WHERE iva=20;
+
+----------- Esercizio 3 ---------------
+
+SELECT data_fattura, COUNT (*), SUM(importo)  
+FROM fatture 
+GROUP BY (data_fattura);
+
+----------- Esercizio 4 ---------------
+
+SELECT * from prodotti 
+WHERE data_attivazione=2017 and in_produzione=true or in_commercio=true;
+
+----------- Esercizio 5 ---------------
+
+SELECT data_fattura FROM fatture COUNT (d)
+WHERE iva=20 
+GROUP BY (data_fattura);
+
+----------- Esercizio 6 ---------------
+
+SELECT data_fattura FROM fatture 
+WHERE tipologia='A'
+GROUP BY (data_fattura)
+HAVING COUNT(*) > 2;
+
+----------- Esercizio 7 ---------------
+
+SELECT numero_fattura, importo, iva, data_fattura
+FROM fatture 
+JOIN fornitori ON fornitori.numero_fornitore = fornitori.numero_fornitore 
+
+----------- Esercizio 8 ---------------
+
+SELECT regione_residenza, SUM (importo) 
+FROM fatture 
+JOIN clienti ON fatture.id_cliente = clienti.numero_cliente
+GROUP BY clienti.regione_residenza;
+
+----------- Esercizio 9 ---------------
+
+SELECT * FROM clienti 
+JOIN fatture on clienti.numero_cliente = fatture.id_cliente
+WHERE clienti.data_nascita = 1980 and fatture.importo > 50;
+
+----------- Esercizio 10 ---------------
+
+SELECT CONCAT (nome, '-', cognome) AS denominazione 
+FROM clienti 
+WHERE regione_residenza = 'Lombardia';
